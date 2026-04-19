@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homepage Esempio</title>
-  <meta name="description" content="Esempio di pagina iniziale HTML per un sito web moderno e responsive." />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@400,700&display=swap" rel="stylesheet">
+  <title>Pittura Edile Pro | Interni, Esterni e Facciate</title>
+  <meta name="description" content="Sito vetrina per promuovere un servizio di pittura edile: interni, esterni, decorazioni, rasature e preventivi rapidi per privati, condomini e aziende." />
+  <meta property="og:title" content="Pittura Edile Pro" />
+  <meta property="og:description" content="Servizi professionali di pittura edile per case, uffici, negozi e facciate." />
+  <meta property="og:type" content="website" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=boska@400,500,700&display=swap" rel="stylesheet">
   <style>
     :root, [data-theme="light"] {
       --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -13,343 +16,403 @@
       --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
       --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
       --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
-      --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
-      --color-bg: #f7f6f2;
-      --color-surface: #fbfbf9;
-      --color-surface-2: #f3f0ec;
-      --color-text: #28251d;
-      --color-text-muted: #6f6b63;
-      --color-border: #d4d1ca;
-      --color-divider: #dfdbd5;
-      --color-primary: #01696f;
-      --color-primary-hover: #0c4e54;
-      --color-primary-highlight: #dcebea;
-      --color-text-inverse: #f9f8f4;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
-      --shadow-md: 0 12px 32px rgba(0,0,0,.08);
-      --radius-sm: .375rem; --radius-md: .75rem; --radius-lg: 1rem; --radius-full: 9999px;
-      --font-body: 'Satoshi', sans-serif;
-      --font-display: 'Boska', serif;
-      --transition: 180ms cubic-bezier(.16,1,.3,1);
-      --content: 1120px;
+      --text-2xl: clamp(2.4rem, 1.4rem + 3.2vw, 4.6rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem;
+      --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+      --color-bg: #f7f6f2; --color-surface: #fbfaf7; --color-surface-2: #f1eee8; --color-surface-offset: #e8e1d6;
+      --color-border: #d7d0c5; --color-divider: #ddd6ca; --color-text: #231f19; --color-text-muted: #6d675f; --color-text-faint: #a19a90;
+      --color-text-inverse: #fcfbf8; --color-primary: #9c4f2e; --color-primary-hover: #7f3f23; --color-primary-soft: #ead5c9;
+      --color-accent: #2f6c62; --color-accent-soft: #d5e2df;
+      --radius-sm: 0.375rem; --radius-md: 0.75rem; --radius-lg: 1rem; --radius-xl: 1.5rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(35,31,25,.05); --shadow-md: 0 10px 30px rgba(35,31,25,.08); --shadow-lg: 0 20px 60px rgba(35,31,25,.12);
+      --font-body: 'General Sans', Inter, sans-serif; --font-display: 'Boska', Georgia, serif;
     }
     [data-theme="dark"] {
-      --color-bg: #171614;
-      --color-surface: #1c1b19;
-      --color-surface-2: #22211f;
-      --color-text: #ece8e1;
-      --color-text-muted: #b2aca2;
-      --color-border: #3a3834;
-      --color-divider: #2d2b28;
-      --color-primary: #4f98a3;
-      --color-primary-hover: #66aab4;
-      --color-primary-highlight: #233135;
-      --color-text-inverse: #171614;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.25);
-      --shadow-md: 0 12px 32px rgba(0,0,0,.35);
+      --color-bg: #171513; --color-surface: #1f1c19; --color-surface-2: #26221e; --color-surface-offset: #2d2722;
+      --color-border: #403830; --color-divider: #312b26; --color-text: #efe6db; --color-text-muted: #b7ada1; --color-text-faint: #7c746b;
+      --color-text-inverse: #1c1814; --color-primary: #c27a56; --color-primary-hover: #d8916e; --color-primary-soft: #423029;
+      --color-accent: #6ea79d; --color-accent-soft: #223632;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.2); --shadow-md: 0 10px 30px rgba(0,0,0,.28); --shadow-lg: 0 20px 60px rgba(0,0,0,.4);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      min-height: 100vh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      color: var(--color-text);
-      background: var(--color-bg);
+    *,:before,:after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    body{min-height:100vh;font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;background:var(--color-bg);color:var(--color-text)}
+    img,svg{display:block;max-width:100%;height:auto}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit;border:none;background:none;cursor:pointer}
+    :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+    .skip-link{position:absolute;left:-999px;top:var(--space-3);background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-3) var(--space-4);z-index:100}
+    .skip-link:focus{left:var(--space-3)}
+    .container{width:min(1120px,calc(100% - 2rem));margin-inline:auto}
+    .section{padding:clamp(var(--space-12),8vw,var(--space-20)) 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-soft);color:var(--color-primary);font-size:var(--text-xs);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+    .headline{font-family:var(--font-display);font-size:var(--text-2xl);line-height:.98;max-width:12ch;letter-spacing:-.02em}
+    .subhead{font-size:var(--text-lg);color:var(--color-text-muted);max-width:52ch}
+    .grid{display:grid;gap:var(--space-6)}
+    .site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--color-bg) 86%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid color-mix(in srgb,var(--color-border) 70%, transparent)}
+    .header-row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-4) 0}
+    .brand{display:flex;align-items:center;gap:var(--space-3);font-weight:700}
+    .brand-mark{width:42px;height:42px;padding:8px;border-radius:12px;background:linear-gradient(135deg,var(--color-primary-soft),var(--color-surface-offset));color:var(--color-primary);box-shadow:var(--shadow-sm)}
+    .brand span{font-size:var(--text-sm);line-height:1.1}
+    .nav{display:flex;align-items:center;gap:var(--space-5)}
+    .nav a{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .nav a:hover{color:var(--color-text)}
+    .actions{display:flex;align-items:center;gap:var(--space-3)}
+    .theme-toggle,.menu-toggle{width:44px;height:44px;border-radius:var(--radius-full);border:1px solid color-mix(in srgb,var(--color-border) 80%, transparent);display:grid;place-items:center;background:var(--color-surface)}
+    .menu-toggle{display:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:48px;padding:0 var(--space-5);border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:600}
+    .btn-primary{background:var(--color-primary);color:var(--color-text-inverse);box-shadow:var(--shadow-md)}
+    .btn-primary:hover{background:var(--color-primary-hover)}
+    .btn-secondary{background:var(--color-surface);border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent)}
+    .hero{padding:clamp(var(--space-12),8vw,var(--space-20)) 0 var(--space-12)}
+    .hero-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-8);align-items:center}
+    .hero-copy{display:grid;gap:var(--space-5)}
+    .hero-actions,.contact-pills{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+    .contact-pill{padding:var(--space-3) var(--space-4);border-radius:var(--radius-full);background:var(--color-surface);border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);font-size:var(--text-sm)}
+    .hero-card{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--color-surface),var(--color-surface-2));border:1px solid color-mix(in srgb,var(--color-border) 80%, transparent);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-lg);min-height:520px}
+    .hero-paint{position:absolute;inset:auto -10% -18% auto;width:70%;aspect-ratio:1/1;background:radial-gradient(circle at 30% 30%, color-mix(in srgb,var(--color-primary) 70%, white 30%), transparent 55%),radial-gradient(circle at 65% 55%, color-mix(in srgb,var(--color-accent) 72%, white 28%), transparent 45%),radial-gradient(circle at 40% 70%, color-mix(in srgb,var(--color-primary-soft) 90%, white 10%), transparent 56%);filter:blur(10px);opacity:.95}
+    .hero-visual{height:100%;display:grid;align-content:space-between;gap:var(--space-6);position:relative}
+    .panel{background:color-mix(in srgb,var(--color-surface) 80%, transparent);border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);border-radius:calc(var(--radius-xl) - var(--space-3));padding:var(--space-5);box-shadow:var(--shadow-sm)}
+    .mini-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+    .mini-stat div{padding:var(--space-4);background:var(--color-bg);border-radius:var(--radius-lg)}
+    .mini-stat strong{display:block;font-size:var(--text-lg)}
+    .mini-stat span{font-size:var(--text-xs);color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.05em}
+    .section-head{display:flex;justify-content:space-between;gap:var(--space-6);align-items:end;margin-bottom:var(--space-8)}
+    .section-head h2{font-size:var(--text-xl);font-family:var(--font-display);line-height:1.05}
+    .section-head p{color:var(--color-text-muted);max-width:44ch}
+    .services{grid-template-columns:repeat(12,1fr)}
+    .service-card{grid-column:span 4;background:var(--color-surface);border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);border-radius:var(--radius-xl);padding:var(--space-6);display:grid;gap:var(--space-4);box-shadow:var(--shadow-sm)}
+    .service-card.featured{grid-column:span 8;background:linear-gradient(135deg,var(--color-surface),var(--color-surface-2))}
+    .icon{width:52px;height:52px;border-radius:16px;background:var(--color-primary-soft);color:var(--color-primary);display:grid;place-items:center}
+    .service-card h3,.process-card h3,.value-card h3,.testimonial h3,.contact-card h3{font-size:var(--text-lg);line-height:1.15}
+    .service-card p,.process-card p,.value-card p,.testimonial p,.contact-card p{color:var(--color-text-muted)}
+    .check-list{display:grid;gap:var(--space-2);font-size:var(--text-sm)}
+    .check-list li{list-style:none;display:flex;gap:var(--space-2);align-items:flex-start}
+    .check-list li::before{content:'•';color:var(--color-accent);font-weight:700}
+    .band{background:linear-gradient(180deg,var(--color-surface),var(--color-bg));border-block:1px solid color-mix(in srgb,var(--color-border) 70%, transparent)}
+    .values,.process,.testimonials,.contact-layout{grid-template-columns:repeat(3,1fr)}
+    .value-card,.process-card,.testimonial,.contact-card{background:var(--color-surface);border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);border-radius:var(--radius-xl);padding:var(--space-6)}
+    .process-card span{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:var(--color-accent-soft);color:var(--color-accent);font-weight:700;margin-bottom:var(--space-4)}
+    .quote{padding:var(--space-8);border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-primary),var(--color-primary-hover));color:var(--color-text-inverse);box-shadow:var(--shadow-lg)}
+    .quote p{font-size:var(--text-lg);max-width:38ch}
+    .quote strong{display:block;margin-top:var(--space-4);font-size:var(--text-sm)}
+    .cta{padding:var(--space-8);border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-surface-2),var(--color-surface));border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);display:grid;gap:var(--space-4)}
+    form{display:grid;gap:var(--space-4)}
+    .field{display:grid;gap:var(--space-2)}
+    label{font-size:var(--text-sm);font-weight:600}
+    input,textarea,select{width:100%;border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);background:var(--color-bg);border-radius:14px;padding:0.95rem 1rem;color:var(--color-text)}
+    textarea{min-height:130px;resize:vertical}
+    .footer{padding:var(--space-8) 0;border-top:1px solid color-mix(in srgb,var(--color-border) 80%, transparent)}
+    .footer-row{display:flex;justify-content:space-between;gap:var(--space-4);align-items:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media (max-width: 980px){
+      .hero-layout,.contact-layout,.values,.process,.testimonials{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr}
+      .service-card,.service-card.featured{grid-column:auto}
+      .section-head,.footer-row{flex-direction:column;align-items:flex-start}
+      .nav{position:absolute;left:1rem;right:1rem;top:calc(100% + .5rem);padding:var(--space-4);border-radius:var(--radius-xl);background:var(--color-surface);border:1px solid color-mix(in srgb,var(--color-border) 85%, transparent);box-shadow:var(--shadow-md);display:none;flex-direction:column;align-items:flex-start}
+      .nav.open{display:flex}
+      .menu-toggle{display:grid}
+      .header-cta{display:none}
     }
-    img, svg { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; border: 0; background: none; cursor: pointer; }
-    .container { width: min(calc(100% - 2rem), var(--content)); margin-inline: auto; }
-    .skip-link {
-      position: absolute; left: -999px; top: 0;
-      background: var(--color-primary); color: var(--color-text-inverse);
-      padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
-    }
-    .skip-link:focus { left: 1rem; top: 1rem; z-index: 100; }
-    .site-header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(12px);
-      background: color-mix(in srgb, var(--color-bg) 84%, transparent);
-      border-bottom: 1px solid var(--color-divider);
-    }
-    .header-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--space-4); padding: var(--space-4) 0;
-    }
-    .brand { display: inline-flex; align-items: center; gap: var(--space-3); font-weight: 700; }
-    .brand-mark { width: 34px; height: 34px; color: var(--color-primary); }
-    .nav { display: flex; align-items: center; gap: var(--space-6); }
-    .nav a { font-size: var(--text-sm); color: var(--color-text-muted); }
-    .nav a:hover { color: var(--color-text); }
-    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
-    .theme-toggle, .menu-toggle {
-      width: 44px; height: 44px; border-radius: var(--radius-full);
-      border: 1px solid var(--color-border); background: var(--color-surface);
-      display: grid; place-items: center;
-    }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      min-height: 44px; padding: .8rem 1.2rem; border-radius: var(--radius-full);
-      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
-      font-size: var(--text-sm); font-weight: 700;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); }
-    .btn-primary:hover { background: var(--color-primary-hover); }
-    .btn-secondary { border: 1px solid var(--color-border); background: var(--color-surface); }
-    .hero {
-      padding: clamp(var(--space-16), 12vw, var(--space-24)) 0 var(--space-16);
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--space-12); align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: .5rem; margin-bottom: var(--space-4);
-      font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase;
-      color: var(--color-primary); background: var(--color-primary-highlight);
-      padding: .45rem .8rem; border-radius: var(--radius-full);
-    }
-    h1, h2 { font-family: var(--font-display); line-height: 1.05; }
-    h1 { font-size: clamp(2.8rem, 7vw, 5.8rem); max-width: 10ch; margin-bottom: var(--space-6); }
-    .hero p { max-width: 58ch; color: var(--color-text-muted); margin-bottom: var(--space-8); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-    .hero-card {
-      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
-      border: 1px solid var(--color-border); border-radius: var(--radius-lg);
-      padding: var(--space-8); box-shadow: var(--shadow-md);
-    }
-    .stat { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
-    .stat div { padding-top: var(--space-4); border-top: 1px solid var(--color-divider); }
-    .stat strong { display: block; font-size: var(--text-lg); }
-    section { padding: clamp(var(--space-12), 8vw, var(--space-24)) 0; }
-    .section-head { max-width: 42rem; margin-bottom: var(--space-8); }
-    .section-head h2 { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
-    .section-head p { color: var(--color-text-muted); }
-    .features {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);
-    }
-    .card {
-      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
-      padding: var(--space-6); box-shadow: var(--shadow-sm);
-    }
-    .card .icon {
-      width: 2.75rem; height: 2.75rem; margin-bottom: var(--space-4);
-      border-radius: var(--radius-md); display: grid; place-items: center;
-      background: var(--color-primary-highlight); color: var(--color-primary);
-    }
-    .card h3 { margin-bottom: var(--space-2); font-size: var(--text-lg); }
-    .card p { color: var(--color-text-muted); }
-    .split {
-      display: grid; grid-template-columns: .9fr 1.1fr; gap: var(--space-8); align-items: center;
-    }
-    .panel {
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg); padding: var(--space-8);
-    }
-    .checklist { list-style: none; display: grid; gap: var(--space-4); }
-    .checklist li { display: flex; gap: .75rem; color: var(--color-text-muted); }
-    .checklist svg { flex: none; color: var(--color-primary); margin-top: .2rem; }
-    .cta {
-      background: var(--color-primary); color: var(--color-text-inverse);
-      border-radius: calc(var(--radius-lg) + .25rem); padding: var(--space-12);
-      display: grid; gap: var(--space-4);
-    }
-    .cta p { max-width: 48ch; color: color-mix(in srgb, var(--color-text-inverse) 82%, transparent); }
-    .cta .btn-secondary { background: color-mix(in srgb, white 12%, transparent); border-color: transparent; color: var(--color-text-inverse); }
-    footer {
-      padding: var(--space-8) 0 var(--space-12);
-      border-top: 1px solid var(--color-divider);
-      color: var(--color-text-muted); font-size: var(--text-sm);
-    }
-    .footer-inner { display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
-    @media (max-width: 860px) {
-      .hero-grid, .features, .split { grid-template-columns: 1fr; }
-      .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem; background: var(--color-bg); border-bottom: 1px solid var(--color-divider); }
-      .nav.open { display: grid; gap: 1rem; }
-      .menu-toggle { display: grid; }
-      .header-actions .btn-primary { display: none; }
-      h1 { max-width: 12ch; }
-    }
-    @media (min-width: 861px) {
-      .menu-toggle { display: none; }
-    }
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <a href="#contenuto" class="skip-link">Salta al contenuto</a>
 
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="Torna alla home">
+    <div class="container header-row">
+      <a href="#home" class="brand" aria-label="Pittura Edile Pro, torna all'inizio">
         <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M24 5L40 14V34L24 43L8 34V14L24 5Z" stroke="currentColor" stroke-width="3"/>
-          <path d="M16 19H32M16 24H28M16 29H24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M11 29c0-7.8 6.3-14 14-14h4v6h-4a8 8 0 0 0-8 8v8h-6v-8Z" fill="currentColor" opacity=".22"/>
+          <path d="M15 37v-8a10 10 0 0 1 10-10h8" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M28 11h9v9" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 19l15-15" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
         </svg>
-        <span>EsempioWeb</span>
+        <span>Pittura Edile Pro<br><small style="font-weight:500;color:var(--color-text-muted)">Interni, esterni e facciate</small></span>
       </a>
 
-      <nav class="nav" id="main-nav" aria-label="Navigazione principale">
+      <nav class="nav" id="nav-menu" aria-label="Navigazione principale">
         <a href="#servizi">Servizi</a>
-        <a href="#vantaggi">Vantaggi</a>
+        <a href="#vantaggi">Perché noi</a>
+        <a href="#processo">Metodo</a>
+        <a href="#recensioni">Recensioni</a>
         <a href="#contatti">Contatti</a>
       </nav>
 
-      <div class="header-actions">
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Apri menu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+      <div class="actions">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambia tema">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a class="btn btn-primary" href="#contatti">Inizia ora</a>
+        <a class="btn btn-primary header-cta" href="#contatti">Richiedi preventivo</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
       </div>
     </div>
   </header>
 
   <main id="contenuto">
     <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Homepage demo</span>
-          <h1>Una pagina iniziale semplice, elegante e pronta da usare</h1>
-          <p>
-            Questo file HTML mostra una homepage esempio con intestazione, sezione hero, blocchi servizi,
-            area vantaggi e call to action finale. Puoi modificarne testi, colori e collegamenti per adattarla al tuo progetto.
-          </p>
+      <div class="container hero-layout">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Servizio professionale di pittura edile</span>
+          <h1 class="headline">Pareti curate, ambienti valorizzati, cantieri puliti.</h1>
+          <p class="subhead">Promuovi il tuo servizio con una presenza online chiara e affidabile: pittura interni, facciate esterne, decorazioni, rasature e finiture per case, uffici, negozi e condomini.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#servizi">Scopri di più</a>
-            <a class="btn btn-secondary" href="#contatti">Contattaci</a>
+            <a class="btn btn-primary" href="#contatti">Prenota un sopralluogo</a>
+            <a class="btn btn-secondary" href="#servizi">Scopri i servizi</a>
+          </div>
+          <div class="contact-pills" aria-label="Informazioni rapide">
+            <div class="contact-pill">Preventivo rapido</div>
+            <div class="contact-pill">Interventi interni ed esterni</div>
+            <div class="contact-pill">Privati, aziende e condomini</div>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Anteprima contenuti principali">
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-3);">Cosa include</p>
-          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Struttura chiara per iniziare subito</h2>
-          <p style="color: var(--color-text-muted); margin-bottom: var(--space-6);">
-            Ideale come base per siti personali, scolastici, portfolio o piccole attività.
-          </p>
-          <div class="stat" aria-label="Statistiche esempio">
-            <div><strong>100%</strong><span>Responsive</span></div>
-            <div><strong>HTML</strong><span>Singolo file</span></div>
-            <div><strong>Light/Dark</strong><span>Tema incluso</span></div>
+        <div class="hero-card reveal">
+          <div class="hero-paint" aria-hidden="true"></div>
+          <div class="hero-visual">
+            <div class="panel">
+              <span class="eyebrow" style="margin-bottom:var(--space-4)">Immagine professionale</span>
+              <h2 style="font-size:var(--text-xl);font-family:var(--font-display);line-height:1.05;margin-bottom:var(--space-3)">Una landing page pensata per far contattare subito il cliente.</h2>
+              <p style="color:var(--color-text-muted)">Testi chiari, vantaggi evidenti, recensioni, sezione servizi e modulo contatti nella stessa pagina.</p>
+            </div>
+            <div class="panel">
+              <div class="mini-stat">
+                <div><strong>Interni</strong><span>Tinteggiature pulite</span></div>
+                <div><strong>Esterni</strong><span>Facciate e protezione</span></div>
+                <div><strong>Decorativi</strong><span>Finiture e dettagli</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <ul class="check-list">
+                <li>Sopralluoghi e valutazioni personalizzate</li>
+                <li>Materiali idonei per pareti, cartongesso e facciate</li>
+                <li>Consegna ordinata con attenzione a tempi e pulizia</li>
+              </ul>
+            </div>
           </div>
-        </aside>
+        </div>
       </div>
     </section>
 
-    <section id="servizi">
+    <section class="section" id="servizi">
       <div class="container">
-        <div class="section-head">
-          <h2>Sezioni già pronte</h2>
-          <p>Questa homepage è organizzata in blocchi facili da riutilizzare e personalizzare.</p>
-        </div>
-        <div class="features">
-          <article class="card">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M4 5h16M8 9h8M8 13h5"/></svg>
-            </div>
-            <h3>Hero introduttiva</h3>
-            <p>Una prima sezione d'impatto con titolo, testo descrittivo e pulsanti principali.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v10l-8 4-8-4V7l8-4Z"/></svg>
-            </div>
-            <h3>Blocchi contenuto</h3>
-            <p>Card ordinate per presentare servizi, funzionalità, materie o argomenti principali.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-            <h3>Invito all'azione</h3>
-            <p>Una sezione finale utile per spingere l'utente a contattarti o visitare altre pagine.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="vantaggi">
-      <div class="container split">
-        <div class="panel">
-          <p style="font-size: var(--text-sm); color: var(--color-primary); margin-bottom: var(--space-3);">Perché usarla</p>
-          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Perfetta come base di partenza</h2>
-          <p style="color: var(--color-text-muted);">
-            Se devi consegnare un esempio di sito o iniziare un progetto veloce, questo modello ti evita di partire da zero.
-          </p>
-        </div>
-        <div>
-          <ul class="checklist">
-            <li>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              Layout responsive, quindi leggibile anche da smartphone.
-            </li>
-            <li>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              Codice pulito in un solo file, facile da copiare e modificare.
-            </li>
-            <li>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              Tema chiaro e scuro già integrato.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="cta" id="contatti">
-          <h2 style="font-size: var(--text-2xl);">Vuoi trasformarlo nel tuo sito?</h2>
-          <p>Sostituisci i testi di esempio con i tuoi contenuti, aggiorna i link del menu e aggiungi eventuali immagini o pagine extra.</p>
-          <div class="hero-actions">
-            <a class="btn btn-secondary" href="mailto:info@example.com">Scrivi una email</a>
-            <a class="btn btn-secondary" href="#home">Torna in alto</a>
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Servizi</span>
+            <h2>Interventi pensati per abitazioni, attività e spazi professionali</h2>
           </div>
+          <p>La struttura della pagina mette in evidenza le lavorazioni più richieste e aiuta il visitatore a capire subito in cosa sei specializzato.</p>
+        </div>
+        <div class="grid services">
+          <article class="service-card featured reveal">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6 8.3 11.7a2 2 0 0 0 0 2.8l1.2 1.2a2 2 0 0 0 2.8 0L18 10"/><path d="M16 4l4 4"/><path d="M6 18l-2 2"/></svg>
+            </div>
+            <h3>Pittura interni e tinteggiature complete</h3>
+            <p>Per appartamenti, uffici, negozi, vani scala e locali commerciali: tinteggiatura, ripristino pareti, rasatura, stuccatura e rifiniture uniformi.</p>
+            <ul class="check-list">
+              <li>Preparazione superfici e protezione arredi</li>
+              <li>Colori classici, moderni o coordinati al brand</li>
+              <li>Soluzioni per rinnovi rapidi e immobili da valorizzare</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/></svg>
+            </div>
+            <h3>Facciate ed esterni</h3>
+            <p>Interventi su esterni con attenzione a copertura, durata e resa estetica di facciate, balconi, muri perimetrali e superfici esposte.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16"/><path d="M6 16c2.5-4 9.5-4 12 0"/><path d="M8 12c1.7-2.3 5.3-2.3 7 0"/></svg>
+            </div>
+            <h3>Decorazioni e finiture</h3>
+            <p>Velature, smalti, effetti materici, verniciature e dettagli decorativi per dare identità agli ambienti senza appesantire il risultato.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="vantaggi">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Perché scegliere questo sito</span>
+            <h2>Una pagina pensata per trasmettere fiducia e generare richieste</h2>
+          </div>
+          <p>Per i servizi di pittura edile funzionano bene messaggi chiari, certificazioni, recensioni, galleria lavori e una call to action semplice.</p>
+        </div>
+        <div class="grid values">
+          <article class="value-card reveal">
+            <h3>Messaggio immediato</h3>
+            <p>Nel primo schermo l’utente capisce subito che tipo di lavori offri e può richiedere un preventivo senza cercare troppe informazioni.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Struttura credibile</h3>
+            <p>Servizi, vantaggi, metodo di lavoro e testimonianze sono ordinati in modo professionale e adatti a un’attività locale.</p>
+          </article>
+          <article class="value-card reveal">
+            <h3>Contatto facilitato</h3>
+            <p>Telefono, email, sopralluogo e modulo finale rendono più semplice trasformare una visita in un contatto commerciale reale.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="processo">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Metodo di lavoro</span>
+            <h2>Un percorso semplice dal primo contatto alla consegna</h2>
+          </div>
+          <p>Mostrare il processo aiuta a rassicurare il cliente e a far percepire ordine, precisione e professionalità.</p>
+        </div>
+        <div class="grid process">
+          <article class="process-card reveal">
+            <span>1</span>
+            <h3>Ascolto e sopralluogo</h3>
+            <p>Raccolta delle esigenze, verifica degli ambienti e valutazione delle superfici per proporre il ciclo di pittura più adatto.</p>
+          </article>
+          <article class="process-card reveal">
+            <span>2</span>
+            <h3>Preventivo chiaro</h3>
+            <p>Indicazione dei lavori, delle finiture previste, dei tempi stimati e delle priorità operative del cantiere.</p>
+          </article>
+          <article class="process-card reveal">
+            <span>3</span>
+            <h3>Esecuzione ordinata</h3>
+            <p>Protezione superfici, applicazione accurata e consegna finale con pulizia e controllo del risultato.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container reveal">
+        <div class="quote">
+          <p>“Un buon sito per un servizio artigianale deve sembrare serio, leggibile e concreto: il cliente deve capire subito cosa fai, dove operi e come contattarti.”</p>
+          <strong>Esempio di messaggio da usare come prova sociale o posizionamento</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="recensioni">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Recensioni</span>
+            <h2>Spazio per testimonianze di clienti soddisfatti</h2>
+          </div>
+          <p>Le recensioni sono utili per rafforzare la fiducia, soprattutto quando il visitatore sta scegliendo tra più artigiani o imprese locali.</p>
+        </div>
+        <div class="grid testimonials">
+          <article class="testimonial reveal">
+            <h3>Appartamento rinnovato</h3>
+            <p>“Lavoro preciso, pareti uniformi e tempi rispettati. Ottima impressione già dal sopralluogo iniziale.”</p>
+          </article>
+          <article class="testimonial reveal">
+            <h3>Ufficio più curato</h3>
+            <p>“Intervento pulito e ben organizzato, con finiture adatte a un ambiente professionale.”</p>
+          </article>
+          <article class="testimonial reveal">
+            <h3>Facciata valorizzata</h3>
+            <p>“Risultato estetico molto migliorato e comunicazione chiara durante tutto il lavoro.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contatti">
+      <div class="container grid contact-layout">
+        <div class="cta reveal" style="grid-column:span 1">
+          <span class="eyebrow">Contatti</span>
+          <h2 style="font-family:var(--font-display);font-size:var(--text-xl);line-height:1.05">Richiedi un sopralluogo o un preventivo</h2>
+          <p style="color:var(--color-text-muted)">Sostituisci questi dati con quelli reali della tua attività: numero di telefono, zona operativa, email e orari.</p>
+          <div class="contact-card" style="padding:0;border:none;background:none">
+            <h3>Riferimenti rapidi</h3>
+            <p>Telefono: +39 333 000 0000<br>Email: info@pitturaedilepro.it<br>Zona operativa: città e provincia</p>
+          </div>
+        </div>
+        <div class="contact-card reveal" style="grid-column:span 2">
+          <h3 style="margin-bottom:var(--space-4)">Modulo richiesta informazioni</h3>
+          <form>
+            <div class="grid" style="grid-template-columns:repeat(2,1fr);gap:var(--space-4)">
+              <div class="field"><label for="nome">Nome</label><input id="nome" type="text" placeholder="Il tuo nome" /></div>
+              <div class="field"><label for="telefono">Telefono</label><input id="telefono" type="tel" placeholder="Numero di telefono" /></div>
+            </div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="La tua email" /></div>
+            <div class="field"><label for="servizio">Servizio richiesto</label>
+              <select id="servizio">
+                <option>Pittura interni</option>
+                <option>Pittura esterni</option>
+                <option>Decorazioni e finiture</option>
+                <option>Rasatura e preparazione superfici</option>
+              </select>
+            </div>
+            <div class="field"><label for="messaggio">Messaggio</label><textarea id="messaggio" placeholder="Descrivi brevemente il lavoro da eseguire"></textarea></div>
+            <div><button class="btn btn-primary" type="submit">Invia richiesta</button></div>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <p>© 2026 EsempioWeb. Pagina iniziale dimostrativa.</p>
-      <p>Realizzata in HTML e CSS puro.</p>
+  <footer class="footer">
+    <div class="container footer-row">
+      <p>© 2026 Pittura Edile Pro — sito demo promozionale per servizi di pittura edile.</p>
+      <p>HTML statico, responsive, con tema chiaro/scuro.</p>
     </div>
   </footer>
 
   <script>
-    (function () {
+    (function(){
       const root = document.documentElement;
       const toggle = document.querySelector('[data-theme-toggle]');
-      const menuButton = document.querySelector('.menu-toggle');
-      const nav = document.getElementById('main-nav');
-      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.setAttribute('data-theme', theme);
-
-      function updateIcon() {
-        toggle.innerHTML = theme === 'dark'
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let current = prefersDark ? 'dark' : 'light';
+      root.setAttribute('data-theme', current);
+      const renderIcon = () => {
+        toggle.innerHTML = current === 'dark'
           ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
           : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-      }
-      updateIcon();
-
-      toggle.addEventListener('click', function () {
-        theme = theme === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', theme);
-        updateIcon();
+        toggle.setAttribute('aria-label', current === 'dark' ? 'Passa al tema chiaro' : 'Passa al tema scuro');
+      };
+      renderIcon();
+      toggle.addEventListener('click', () => {
+        current = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', current);
+        renderIcon();
       });
 
-      if (menuButton) {
-        menuButton.addEventListener('click', function () {
-          const open = nav.classList.toggle('open');
-          menuButton.setAttribute('aria-expanded', String(open));
-        });
-      }
+      const menuButton = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('nav-menu');
+      menuButton?.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }));
+
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, {threshold: 0.16});
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      document.querySelector('form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Demo: collega qui email, WhatsApp o invio server-side del modulo.');
+      });
     })();
   </script>
 </body>
