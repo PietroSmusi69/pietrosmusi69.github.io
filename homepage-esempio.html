@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage Esempio</title>
+  <meta name="description" content="Esempio di pagina iniziale HTML per un sito web moderno e responsive." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@400,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f3f0ec;
+      --color-text: #28251d;
+      --color-text-muted: #6f6b63;
+      --color-border: #d4d1ca;
+      --color-divider: #dfdbd5;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #dcebea;
+      --color-text-inverse: #f9f8f4;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md: 0 12px 32px rgba(0,0,0,.08);
+      --radius-sm: .375rem; --radius-md: .75rem; --radius-lg: 1rem; --radius-full: 9999px;
+      --font-body: 'Satoshi', sans-serif;
+      --font-display: 'Boska', serif;
+      --transition: 180ms cubic-bezier(.16,1,.3,1);
+      --content: 1120px;
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #22211f;
+      --color-text: #ece8e1;
+      --color-text-muted: #b2aca2;
+      --color-border: #3a3834;
+      --color-divider: #2d2b28;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #66aab4;
+      --color-primary-highlight: #233135;
+      --color-text-inverse: #171614;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.25);
+      --shadow-md: 0 12px 32px rgba(0,0,0,.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: 0; background: none; cursor: pointer; }
+    .container { width: min(calc(100% - 2rem), var(--content)); margin-inline: auto; }
+    .skip-link {
+      position: absolute; left: -999px; top: 0;
+      background: var(--color-primary); color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; z-index: 100; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--color-bg) 84%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4); padding: var(--space-4) 0;
+    }
+    .brand { display: inline-flex; align-items: center; gap: var(--space-3); font-weight: 700; }
+    .brand-mark { width: 34px; height: 34px; color: var(--color-primary); }
+    .nav { display: flex; align-items: center; gap: var(--space-6); }
+    .nav a { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .nav a:hover { color: var(--color-text); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .theme-toggle, .menu-toggle {
+      width: 44px; height: 44px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: var(--color-surface);
+      display: grid; place-items: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      min-height: 44px; padding: .8rem 1.2rem; border-radius: var(--radius-full);
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+      font-size: var(--text-sm); font-weight: 700;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { border: 1px solid var(--color-border); background: var(--color-surface); }
+    .hero {
+      padding: clamp(var(--space-16), 12vw, var(--space-24)) 0 var(--space-16);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--space-12); align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem; margin-bottom: var(--space-4);
+      font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase;
+      color: var(--color-primary); background: var(--color-primary-highlight);
+      padding: .45rem .8rem; border-radius: var(--radius-full);
+    }
+    h1, h2 { font-family: var(--font-display); line-height: 1.05; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.8rem); max-width: 10ch; margin-bottom: var(--space-6); }
+    .hero p { max-width: 58ch; color: var(--color-text-muted); margin-bottom: var(--space-8); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .hero-card {
+      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
+      border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+      padding: var(--space-8); box-shadow: var(--shadow-md);
+    }
+    .stat { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
+    .stat div { padding-top: var(--space-4); border-top: 1px solid var(--color-divider); }
+    .stat strong { display: block; font-size: var(--text-lg); }
+    section { padding: clamp(var(--space-12), 8vw, var(--space-24)) 0; }
+    .section-head { max-width: 42rem; margin-bottom: var(--space-8); }
+    .section-head h2 { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
+    .section-head p { color: var(--color-text-muted); }
+    .features {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4);
+    }
+    .card {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+      padding: var(--space-6); box-shadow: var(--shadow-sm);
+    }
+    .card .icon {
+      width: 2.75rem; height: 2.75rem; margin-bottom: var(--space-4);
+      border-radius: var(--radius-md); display: grid; place-items: center;
+      background: var(--color-primary-highlight); color: var(--color-primary);
+    }
+    .card h3 { margin-bottom: var(--space-2); font-size: var(--text-lg); }
+    .card p { color: var(--color-text-muted); }
+    .split {
+      display: grid; grid-template-columns: .9fr 1.1fr; gap: var(--space-8); align-items: center;
+    }
+    .panel {
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: var(--space-8);
+    }
+    .checklist { list-style: none; display: grid; gap: var(--space-4); }
+    .checklist li { display: flex; gap: .75rem; color: var(--color-text-muted); }
+    .checklist svg { flex: none; color: var(--color-primary); margin-top: .2rem; }
+    .cta {
+      background: var(--color-primary); color: var(--color-text-inverse);
+      border-radius: calc(var(--radius-lg) + .25rem); padding: var(--space-12);
+      display: grid; gap: var(--space-4);
+    }
+    .cta p { max-width: 48ch; color: color-mix(in srgb, var(--color-text-inverse) 82%, transparent); }
+    .cta .btn-secondary { background: color-mix(in srgb, white 12%, transparent); border-color: transparent; color: var(--color-text-inverse); }
+    footer {
+      padding: var(--space-8) 0 var(--space-12);
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+    @media (max-width: 860px) {
+      .hero-grid, .features, .split { grid-template-columns: 1fr; }
+      .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem; background: var(--color-bg); border-bottom: 1px solid var(--color-divider); }
+      .nav.open { display: grid; gap: 1rem; }
+      .menu-toggle { display: grid; }
+      .header-actions .btn-primary { display: none; }
+      h1 { max-width: 12ch; }
+    }
+    @media (min-width: 861px) {
+      .menu-toggle { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Torna alla home">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 5L40 14V34L24 43L8 34V14L24 5Z" stroke="currentColor" stroke-width="3"/>
+          <path d="M16 19H32M16 24H28M16 29H24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>EsempioWeb</span>
+      </a>
+
+      <nav class="nav" id="main-nav" aria-label="Navigazione principale">
+        <a href="#servizi">Servizi</a>
+        <a href="#vantaggi">Vantaggi</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambia tema">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a class="btn btn-primary" href="#contatti">Inizia ora</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Homepage demo</span>
+          <h1>Una pagina iniziale semplice, elegante e pronta da usare</h1>
+          <p>
+            Questo file HTML mostra una homepage esempio con intestazione, sezione hero, blocchi servizi,
+            area vantaggi e call to action finale. Puoi modificarne testi, colori e collegamenti per adattarla al tuo progetto.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#servizi">Scopri di più</a>
+            <a class="btn btn-secondary" href="#contatti">Contattaci</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Anteprima contenuti principali">
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-3);">Cosa include</p>
+          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Struttura chiara per iniziare subito</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: var(--space-6);">
+            Ideale come base per siti personali, scolastici, portfolio o piccole attività.
+          </p>
+          <div class="stat" aria-label="Statistiche esempio">
+            <div><strong>100%</strong><span>Responsive</span></div>
+            <div><strong>HTML</strong><span>Singolo file</span></div>
+            <div><strong>Light/Dark</strong><span>Tema incluso</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servizi">
+      <div class="container">
+        <div class="section-head">
+          <h2>Sezioni già pronte</h2>
+          <p>Questa homepage è organizzata in blocchi facili da riutilizzare e personalizzare.</p>
+        </div>
+        <div class="features">
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M4 5h16M8 9h8M8 13h5"/></svg>
+            </div>
+            <h3>Hero introduttiva</h3>
+            <p>Una prima sezione d'impatto con titolo, testo descrittivo e pulsanti principali.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v10l-8 4-8-4V7l8-4Z"/></svg>
+            </div>
+            <h3>Blocchi contenuto</h3>
+            <p>Card ordinate per presentare servizi, funzionalità, materie o argomenti principali.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <h3>Invito all'azione</h3>
+            <p>Una sezione finale utile per spingere l'utente a contattarti o visitare altre pagine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="vantaggi">
+      <div class="container split">
+        <div class="panel">
+          <p style="font-size: var(--text-sm); color: var(--color-primary); margin-bottom: var(--space-3);">Perché usarla</p>
+          <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Perfetta come base di partenza</h2>
+          <p style="color: var(--color-text-muted);">
+            Se devi consegnare un esempio di sito o iniziare un progetto veloce, questo modello ti evita di partire da zero.
+          </p>
+        </div>
+        <div>
+          <ul class="checklist">
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              Layout responsive, quindi leggibile anche da smartphone.
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              Codice pulito in un solo file, facile da copiare e modificare.
+            </li>
+            <li>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              Tema chiaro e scuro già integrato.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta" id="contatti">
+          <h2 style="font-size: var(--text-2xl);">Vuoi trasformarlo nel tuo sito?</h2>
+          <p>Sostituisci i testi di esempio con i tuoi contenuti, aggiorna i link del menu e aggiungi eventuali immagini o pagine extra.</p>
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="mailto:info@example.com">Scrivi una email</a>
+            <a class="btn btn-secondary" href="#home">Torna in alto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2026 EsempioWeb. Pagina iniziale dimostrativa.</p>
+      <p>Realizzata in HTML e CSS puro.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const menuButton = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('main-nav');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      function updateIcon() {
+        toggle.innerHTML = theme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      updateIcon();
+
+      toggle.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        updateIcon();
+      });
+
+      if (menuButton) {
+        menuButton.addEventListener('click', function () {
+          const open = nav.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(open));
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
